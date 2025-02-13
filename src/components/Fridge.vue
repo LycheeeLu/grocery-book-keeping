@@ -1,58 +1,105 @@
 <template>
-  <div class="fridge">
-    <h2>Fridge</h2>
-    <img src="../assets/fridge.png" alt="Fridge" class="fridge-image" />
-    <div>
-      <button @click="addGrocery('Banana', 3)">Add Banana (3 days)</button>
-      <button @click="addGrocery('Milk', 7)">Add Milk (7 days)</button>
+  <div class="fridge-container">
+    <div class="fridge-background">
+      <svg 
+        class="fridge-svg" 
+        viewBox="0 0 500 800"
+      >
+        <g v-for="(shelf, index) in shelves" :key="index">
+          <rect 
+            v-for="slot in shelf.slots"
+            :key="slot.id"
+            :x="slot.x" :y="slot.y" 
+            width="80" height="50"
+            fill="rgba(255,255,255,0.2)"
+            stroke="gray"
+          />
+        </g>
+        <g v-for="(item, index) in groceries" :key="index">
+          <image 
+            :x="item.x" :y="item.y" 
+            width="40" height="40"
+            :href="item.image"
+            @click="removeGrocery(index)"
+            style="cursor: pointer;"
+          />
+        </g>
+      </svg>
     </div>
-    <draggable v-model="groceries">
-      <ul>
-        <li v-for="(grocery, index) in groceries" :key="index">
-          {{ grocery.name }} - Expires in {{ daysLeft(grocery.expirationDate) }} days
-          <button @click="removeGrocery(index)">Remove</button>
-        </li>
-      </ul>
-    </draggable>
+    <CircularMenu class="circular-menu" @select="addGrocery" />
   </div>
 </template>
 
-<script setup>
-import draggable from 'vuedraggable';
-import { ref, onMounted, watch } from "vue";
+<script>
+import CircularMenu from './CircularMenu.vue';
 
-const groceries = ref([]);
-
-onMounted(() => {
-  const savedGroceries = JSON.parse(localStorage.getItem("groceries")) || [];
-  groceries.value = savedGroceries;
-});
-
-watch(groceries, (newGroceries) => {
-  localStorage.setItem("groceries", JSON.stringify(newGroceries));
-}, { deep: true });
-
-const addGrocery = (name, daysToExpire) => {
-  const expirationDate = new Date();
-  expirationDate.setDate(expirationDate.getDate() + daysToExpire);
-  groceries.value.push({
-    name,
-    expirationDate: expirationDate.toISOString(),
-  });
-};
-
-const removeGrocery = (index) => {
-  groceries.value.splice(index, 1);
-};
-
-const daysLeft = (date) => {
-  return Math.ceil((new Date(date) - new Date()) / (1000 * 60 * 60 * 24));
+export default {
+  components: {
+    CircularMenu
+  },
+  data() {
+    return {
+      menuOpen: false,
+      shelves: [
+        { slots: this.generateSlots(50, 100) },
+        { slots: this.generateSlots(50, 200) },
+        { slots: this.generateSlots(50, 300) },
+      ],
+      groceries: []
+    };
+  },
+  methods: {
+    generateSlots(startX, startY) {
+      return Array.from({ length: 5 }, (_, i) => ({
+        id: i, x: startX + i * 80, y: startY
+      }));
+    },
+    addGrocery(item) {
+      console.log("Adding grocery:", item);
+      const totalSlots = this.shelves.reduce((acc, shelf) => acc + shelf.slots.length, 0);
+      if (this.groceries.length < totalSlots) {
+        for (let shelf of this.shelves) {
+          for (let slot of shelf.slots) {
+            const isOccupied = this.groceries.some(g => g.x === slot.x && g.y === slot.y);
+            if (!isOccupied) {
+              this.groceries.push({ ...item, x: slot.x, y: slot.y });
+              return;
+            }
+          }
+        }
+      }
+    },
+    removeGrocery(index) {
+      this.groceries.splice(index, 1);
+    }
+  }
 };
 </script>
 
-<style scoped>
-.fridge-image {
-  width: 300px;
-  cursor: pointer;
+<style>
+.fridge-container { 
+  display: flex; 
+  align-items: flex-start; 
+}
+
+.fridge-background {
+  background-image: url('/fridge.svg');
+  background-size: cover;
+  width: 500px; /* Adjust width as needed */
+  height: 800px; /* Adjust height as needed */
+  position: relative;
+}
+
+.fridge-svg { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default; 
+}
+
+.circular-menu {
+  margin-left: 20px; /* Adjust as needed for spacing */
 }
 </style>
