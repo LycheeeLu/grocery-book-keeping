@@ -1,12 +1,86 @@
-<svg width="500" height="800" viewBox="0 0 500 800" xmlns="http://www.w3.org/2000/svg">
-  <!-- Fridge body -->
-  <rect x="50" y="50" width="400" height="700" fill="#D8D8D8" stroke="black" stroke-width="5"/>
+<svg viewBox="0 0 500 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define gradient for depth -->
+  <defs>
+    <linearGradient id="depthGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B8C5D6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#E8F0F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8C5D6;stop-opacity:1" />
+    </linearGradient>
+    <!-- Light glow effect -->
+    <radialGradient id="lightGlow" cx="50%" cy="10%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9" />
+      <stop offset="70%" style="stop-color:#FFFFFF;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </radialGradient>
+  </defs>
 
-  <!-- Fridge door -->
-  <rect x="60" y="60" width="380" height="680" fill="white" stroke="black" stroke-width="4"/>
+  <!-- Cabinet depth effect - back wall -->
+  <rect x="50" y="50" width="400" height="700" fill="url(#depthGradient)" stroke="#2B374D" stroke-width="5"/>
+  
+  <!-- Side depth panels -->
+  <path d="M50 50 L70 70 L70 730 L50 750" fill="#A8B5C6"/>
+  <path d="M450 50 L430 70 L430 730 L450 750" fill="#A8B5C6"/>
+  
+  <!-- Dense ice texture pattern - using multiple layers -->
+  <g opacity="0.8">
+    <!-- Base ice layer -->
+    <rect x="70" y="70" width="360" height="660" fill="#E8F0F7"/>
+    
+    <!-- Chunky ice formations -->
+    <g fill="#FFFFFF" opacity="0.7">
+      <path d="M80 60 h340 q-20 20 -40 25 q-30 5 -50 15 q-40 20 -80 20 q-30 0 -60 10 q-40 10 -70 20 q-30 10 -40 30" />
+      <path d="M90 70 h320 q-15 15 -30 20 q-25 5 -40 12 q-35 15 -70 15 q-25 0 -50 8 q-35 8 -60 15 q-25 8 -35 25" />
+    </g>
+  </g>
 
-  <!-- Shelves (3 levels) -->
-  <line x1="70" y1="260" x2="430" y2="260" stroke="black" stroke-width="4"/>
-  <line x1="70" y1="440" x2="430" y2="440" stroke="black" stroke-width="4"/>
-  <line x1="70" y1="620" x2="430" y2="620" stroke="black" stroke-width="4"/>
+  <!-- Shelves with ice buildup -->
+  <g>
+    <path d="M70 258 h360 v8 q-180 15 -360 0 z" fill="#CBE1F4" opacity="0.9"/>
+    <path d="M70 438 h360 v8 q-180 15 -360 0 z" fill="#CBE1F4" opacity="0.9"/>
+    <path d="M70 618 h360 v8 q-180 15 -360 0 z" fill="#CBE1F4" opacity="0.9"/>
+  </g>
+
+  <!-- Plush ice accumulation -->
+  <g fill="#FFFFFF" opacity="0.5">
+    <!-- Top section -->
+    <g id="iceCluster1">
+      <rect x="80" y="80" width="4" height="4"/>
+      <rect x="82" y="82" width="4" height="4"/>
+      <rect x="84" y="80" width="4" height="4"/>
+      <rect x="80" y="84" width="4" height="4"/>
+    </g>
+    <!-- Clone and translate ice clusters across surface -->
+    <use href="#iceCluster1" x="40" y="10"/>
+    <use href="#iceCluster1" x="80" y="20"/>
+    <use href="#iceCluster1" x="120" y="5"/>
+    <use href="#iceCluster1" x="160" y="15"/>
+    <use href="#iceCluster1" x="200" y="10"/>
+    <use href="#iceCluster1" x="240" y="20"/>
+    <use href="#iceCluster1" x="280" y="5"/>
+  </g>
+
+  <!-- Light fixture -->
+  <circle cx="250" cy="100" r="15" fill="#FFFFEE" stroke="#2B374D" stroke-width="2"/>
+  <circle cx="250" cy="100" r="10" fill="#FFFFFF"/>
+  <!-- Light glow effect -->
+  <circle cx="250" cy="100" r="200" fill="url(#lightGlow)" opacity="0.3"/>
+  
+  <!-- Additional frost details -->
+  <g fill="#FFFFFF" opacity="0.6">
+    <!-- Scattered small ice crystals -->
+    <rect x="100" y="150" width="2" height="2"/>
+    <rect x="120" y="160" width="2" height="2"/>
+    <rect x="140" y="155" width="2" height="2"/>
+    <rect x="160" y="165" width="2" height="2"/>
+    <rect x="180" y="150" width="2" height="2"/>
+    <rect x="200" y="160" width="2" height="2"/>
+    <!-- Repeat pattern for middle and bottom sections -->
+    <use href="#iceCluster1" x="0" y="200"/>
+    <use href="#iceCluster1" x="40" y="210"/>
+    <use href="#iceCluster1" x="80" y="220"/>
+    <use href="#iceCluster1" x="120" y="205"/>
+    <use href="#iceCluster1" x="0" y="400"/>
+    <use href="#iceCluster1" x="40" y="410"/>
+    <use href="#iceCluster1" x="80" y="420"/>
+  </g>
 </svg>

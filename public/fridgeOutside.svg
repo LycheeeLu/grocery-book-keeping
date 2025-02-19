@@ -1,0 +1,55 @@
+<svg viewBox="0 0 500 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background shadow -->
+  <rect x="65" y="65" width="400" height="700" fill="#A8A8A8"/>
+  
+  <!-- Fridge body -->
+  <rect x="50" y="50" width="400" height="700" fill="#B8C5D6" stroke="#2B374D" stroke-width="5"/>
+  
+  <!-- Fridge door -->
+  <rect x="60" y="60" width="380" height="680" fill="#D0DFF0" stroke="#2B374D" stroke-width="4"/>
+  
+  <!-- Pixel art handle -->
+  <rect x="390" y="300" width="30" height="120" fill="#8596AD" stroke="#2B374D" stroke-width="2"/>
+  <rect x="385" y="310" width="15" height="100" fill="#687A94"/>
+  
+  <!-- Shelves (3 levels) with pixel style -->
+  <rect x="70" y="258" width="360" height="4" fill="#8596AD"/>
+  <rect x="70" y="438" width="360" height="4" fill="#8596AD"/>
+  <rect x="70" y="618" width="360" height="4" fill="#8596AD"/>
+  
+  <!-- Pixel art decorative elements -->
+  <!-- Top compartment items -->
+  <rect x="100" y="100" width="40" height="40" fill="#A1B5D0"/>
+  <rect x="160" y="120" width="60" height="30" fill="#95A8C2"/>
+  <rect x="250" y="90" width="50" height="60" fill="#8899B5"/>
+  
+  <!-- Middle compartment items -->
+  <rect x="120" y="300" width="50" height="40" fill="#9AABC4"/>
+  <rect x="200" y="320" width="40" height="30" fill="#8F9FB8"/>
+  <rect x="280" y="290" width="45" height="50" fill="#A1B5D0"/>
+  
+  <!-- Bottom compartment items -->
+  <rect x="110" y="480" width="55" height="45" fill="#95A8C2"/>
+  <rect x="190" y="500" width="35" height="35" fill="#8899B5"/>
+  <rect x="260" y="470" width="50" height="55" fill="#9AABC4"/>
+  
+  <!-- Frost effect (small pixel dots) -->
+  <g fill="#FFFFFF" opacity="0.5">
+    <rect x="80" y="80" width="2" height="2"/>
+    <rect x="120" y="70" width="2" height="2"/>
+    <rect x="200" y="90" width="2" height="2"/>
+    <rect x="300" y="75" width="2" height="2"/>
+    <rect x="350" y="85" width="2" height="2"/>
+    <rect x="90" y="200" width="2" height="2"/>
+    <rect x="150" y="280" width="2" height="2"/>
+    <rect x="250" y="350" width="2" height="2"/>
+    <rect x="330" y="400" width="2" height="2"/>
+    <rect x="180" y="550" width="2" height="2"/>
+    <rect x="270" y="600" width="2" height="2"/>
+  </g>
+  
+  <!-- Temperature control panel -->
+  <rect x="100" y="150" width="60" height="30" fill="#687A94" stroke="#2B374D" stroke-width="2"/>
+  <rect x="110" y="160" width="10" height="10" fill="#A1B5D0"/>
+  <rect x="130" y="160" width="20" height="10" fill="#8596AD"/>
+</svg>

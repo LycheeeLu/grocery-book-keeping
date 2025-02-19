@@ -26,16 +26,17 @@
         </g>
       </svg>
     </div>
-    <CircularMenu class="circular-menu" @select="addGrocery" />
+    <GroceryMenu class="grocery-menu" @select="addGrocery" />
   </div>
 </template>
 
 <script>
-import CircularMenu from './CircularMenu.vue';
+import GroceryMenu from './GroceryMenu.vue';
+
 
 export default {
   components: {
-    CircularMenu
+    GroceryMenu
   },
   data() {
     return {
@@ -99,7 +100,7 @@ export default {
   cursor: default; 
 }
 
-.circular-menu {
+.grocery-menu {
   margin-left: 20px; /* Adjust as needed for spacing */
 }
 </style>

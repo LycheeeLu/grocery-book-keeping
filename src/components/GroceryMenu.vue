@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: "Apple", image: "/groceries/apple.svg" },
+        { name: "Apple", image: "/groceries/apple.png" },
         { name: "Banana", image: "/groceries/banana.svg" },
         { name: "Grape", image: "/groceries/grape.svg" }
       ]

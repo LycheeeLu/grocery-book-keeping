@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../components/Home.vue';
-import Fridge from '../components/Fridge.vue';
+import FridgeSlide from '../components/Fridge.vue';
+import KitchenSlide from '../components/KitchenSlide.vue';
+import BulletinSlide from '../components/BulletinSlide.vue';
 
 const routes = [
   {
@@ -9,10 +11,21 @@ const routes = [
     component: Home,
   },
   {
-    path: '/fridge',
-    name: 'Fridge',
-    component: Fridge,
+    path: '/fridgeslide',
+    name: 'FridgeSlide',
+    component: FridgeSlide,
   },
+  {
+    path:'/kitchenslide',
+    name: 'KitchenSlide',
+    component: KitchenSlide,
+
+  },
+  {
+    path:'/bulletinslide',
+    name: 'BulletinSlide',
+    component: BulletinSlide,
+  }
 ];
 
 const router = createRouter({
