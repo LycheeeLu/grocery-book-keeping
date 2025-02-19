@@ -9,23 +9,27 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-  },
-  {
-    path: '/fridgeslide',
-    name: 'FridgeSlide',
-    component: FridgeSlide,
-  },
-  {
-    path:'/kitchenslide',
-    name: 'KitchenSlide',
-    component: KitchenSlide,
+    children:[
+  
+      {
+        path: '/fridgeslide',
+        name: 'FridgeSlide',
+        component: FridgeSlide,
+      },
+      {
+        path:'/kitchenslide',
+        name: 'KitchenSlide',
+        component: KitchenSlide,
+    
+      },
+      {
+        path:'/bulletinslide',
+        name: 'BulletinSlide',
+        component: BulletinSlide,
+      }
 
+    ]
   },
-  {
-    path:'/bulletinslide',
-    name: 'BulletinSlide',
-    component: BulletinSlide,
-  }
 ];
 
 const router = createRouter({
