@@ -1,6 +1,9 @@
 <template>
-  <swiper :navigation="true" :modules="modules" class="mySwiper" @slideChange="onSlideChange">
-    <swiper-slide >Kitchen</swiper-slide>
+  <swiper :navigation="true" :modules="modules" class="mySwiper"
+ @slideChange="onSlideChange">
+
+    <swiper-slide >Home<router-view/></swiper-slide>
+    <SwiperSlide>kitchen<router-view/></SwiperSlide>
     <swiper-slide>Fridge<router-view/></swiper-slide>
     <swiper-slide>Bulletin<router-view/></swiper-slide>
     <cat-menu/>
@@ -16,12 +19,8 @@
   import '../style.css';
   import swiperCore from "swiper";
   swiperCore.use([/* default global options */])
-
-
-  // import required modules
   import { Navigation } from 'swiper/modules';
   import CatMenu from './cat-menu.vue';
-  import KitchenSlide from './KitchenSlide.vue';
 
   export default {
     components: {
@@ -39,7 +38,7 @@
     methods:{
       onSlideChange(event){
         const activeIndex = event.activeIndex;
-        const routes = ['/kitchenslide', '/fridgeslide', '/bulletinslide'];
+        const routes = ['/','/kitchenslide', '/fridgeslide', '/bulletinslide'];
         if(routes[activeIndex]){
           this.$router.push(routes[activeIndex]);
 
