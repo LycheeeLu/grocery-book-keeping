@@ -1,9 +1,9 @@
 <template>
     <div class="cat-page-overlay" @click="toggleCatMenu">
-        <img
-            src="/public/cat-icon-tail.gif"
+        <img 
+            src="/cat-icon-tail.gif"
                 alt ="cat icon"
-                class="cat-icon"
+                class="cat-icon pixelart"
         />
         <div v-if="menuOpen && VisibleMenuOptions.length > 0" class="menu-options">
             <ul>
@@ -69,9 +69,12 @@ export default {
 </script>
 
 <style scoped>
-.cat-page-overlay{
+.pixelart {
+  image-rendering: pixelated;
+}
+.cat-page-overlay{ 
  position: fixed;
-  bottom: 13px;
+  bottom: 15px;
   left:50%;
   transform: translateX(-50%);
   z-index: 1000;
