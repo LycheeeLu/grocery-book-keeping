@@ -91,7 +91,7 @@ export default {
     left: 50%;
     transform: translateX(-50%);
     background-color: rgb(241, 219, 183);
-    border: 1px solid #ddd;
+    border: 2px solid #ecdede;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
@@ -114,6 +114,7 @@ export default {
 }
 
 .menu-options li:hover {
+    font-weight: bolder;
   background-color: #f3b263;
 }
 </style>

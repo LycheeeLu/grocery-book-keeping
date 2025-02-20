@@ -25,7 +25,9 @@
           />
         </g>
       </svg>
+   
     </div>
+    <img src="/fridge/fridge-left.png" class="fridge-image" />
     <GroceryMenu class="grocery-menu" @select="addGrocery" />
   </div>
 </template>
@@ -83,13 +85,15 @@ export default {
   align-items: flex-start; 
 }
 
-.fridge-background {
-  background-image: url('/fridge.svg');
-  background-size: cover;
-  width: 500px; /* Adjust width as needed */
-  height: 800px; /* Adjust height as needed */
-  position: relative;
+.fridge-image {
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  width: 200px;
+  height: 200px;
+   /* Or 'cover', but 'contain' avoids stretching */
 }
+
+
 
 .fridge-svg { 
   position: absolute;

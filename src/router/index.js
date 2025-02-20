@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../components/Home.vue';
-import FridgeSlide from '../components/Fridge.vue';
+import FridgeSlide from '../components/FridgeSlide.vue';
 import KitchenSlide from '../components/KitchenSlide.vue';
 import BulletinSlide from '../components/BulletinSlide.vue';
 
