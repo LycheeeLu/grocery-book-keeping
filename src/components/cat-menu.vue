@@ -1,83 +1,116 @@
 <template>
-    <div class="cat-menu" @click="toggleCatMenu">
-
-            this is the cat menu PNG
-
-    </div>
-    <div v-if="showCatMenuFridge && $route.path === '/fridgeslide'" class="cat-menu-fridge">
-        <ul>
-            <li @click="emptyFridge">
-                Empty Fridge
+    <div class="cat-page-overlay" @click="toggleCatMenu">
+        <img
+            src="/public/cat-icon-tail.gif"
+                alt ="cat icon"
+                class="cat-icon"
+        />
+        <div v-if="menuOpen && VisibleMenuOptions.length > 0" class="menu-options">
+            <ul>
+            <li
+                 v-for="(option, index) in VisibleMenuOptions"
+                :key="index"
+                 @click="option.action"
+            >
+                {{ option.label}}
             </li>
-            <li @click="emptyExpired">
-                Throw out Expired items
-            </li>
-        </ul>
+            </ul>
+        </div>
     </div>
 </template>
-<script>
 
-    export default {
-        data(){
-            return{
-                showCatMenuFridge: false,
+<script>
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
+export default {
+        setup(){
+            const route = useRoute();
+            const menuOpen = ref(false);
+            //make menu visible
+            const toggleCatMenu = () => {
+                menuOpen.value = !menuOpen.value;
             };
 
-        },
-        methods: {
-            toggleCatMenu() {
-                this.showCatContextMenu = !this.showCatContextMenu;
-            },
-            emptyFridge() {
-                console.log("fridge is emptied");
-                this.showCatMenuFridge = false;
-                
-            },
-            emptyExpired(){
-                console.log("Expired is emptied");
-                this.showCatMenuFridge = false;
-            },
+            //example menu functions
+            const emptyFridge = () => {
+            console.log('Fridge emptied!');
+            // Add empty fridge logic here
+            };
+            const emptyExpired = () => {
+            console.log('Expired items thrown out!');
+            // Add throw out expired logic here
+                };
 
-        },
+            const menuOptions = computed(() => {
+                if (route.path === '/fridgeslide') {
+                    return [
+                        { label: 'Empty Fridge', action: emptyFridge },
+                        { label: 'Throw out Expired items', action: emptyExpired }
+                    ];
+                } else if (route.path === '/bulletinslide') {
+                     return [
+                            { label: 'Throw out Expired items', action: emptyExpired }
+                        ];
+                }
+                return []; 
+            });
 
-       
-    };
+                // Only show valid, non-empty menu options
+            const VisibleMenuOptions = computed(() => 
+            (menuOptions.value).filter(option => option?.label?.trim()));
+
+            return{
+                menuOpen,
+                toggleCatMenu,
+                VisibleMenuOptions,
+            };
+        },
+};
 </script>
 
-<style>
-.cat-menu {
-  position: fixed;
-  bottom: 20px;
-  height: 50px;
+<style scoped>
+.cat-page-overlay{
+ position: fixed;
+  bottom: 13px;
+  left:50%;
+  transform: translateX(-50%);
+  z-index: 1000;
   cursor: pointer;
-  z-index: 1000;
-  background-size: contain;
-  background-image: url('/path/to/your/pixel-cat.png'); /* Replace with your cat PNG */
+}
+.cat-icon{
+    width: 120px;
+    height: 120px;
+
+}
+.menu-options{
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(241, 219, 183);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    min-width: 150px;
+    white-space: nowrap;
 }
 
-.cat-menu-fridge {
-  position: fixed;
-  bottom: 80px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  z-index: 1000;
-}
-
-.cat-menu-fridge ul {
+.menu-options ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.cat-context-menu li {
+.menu-options li {
   padding: 8px 12px;
+  font-family: 'Courier New', Courier, monospace;
   cursor: pointer;
+  transition: background-color 0.2s;
+  margin: 5px;
 }
 
-.cat-context-menu li:hover {
-  background-color: #f0f0f0;
+.menu-options li:hover {
+  background-color: #f3b263;
 }
 </style>
