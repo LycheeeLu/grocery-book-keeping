@@ -47,13 +47,6 @@ export default {
 
 <style scoped>
 
-.fridge {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-
 
 .fridge-wall,
 .fridge-box,

@@ -2,8 +2,6 @@
      <!-- Book container -->
     <div class="book-container">
         <div class="book">
-
-
             <div class="book-itself">
                 <img src="/menu/menu-book.png" />
             </div>
@@ -15,44 +13,74 @@
                 <img src="/menu/menu-processed.png" class="processed"/>
             </div>
 
-            <div class="book-flip">
+            <div class="book-pagebutton">
                 <img src="/menu/menu-pageup.png" />
                 <img src="/menu/menu-pagedown.png" />
             </div>
 
-            <div class="item">
-                <img src="/menu/drink-coffee.png" class="drink"/>
-                <img src="/menu/drink-milk.png" class="drink" />
-                
-                <img src="/menu/meat-fillet.png" class="meant"/>
-                <img src="/menu/meat-fish.png" class="meat"/>
-                <img src="/menu/meat-chicken.png" class="meat"/>
-
-
-                <img src="/menu/fruit-grape.png" class="vegfruit"/>
-                <img src="/menu/fruit-pear.png" class="vegfruit"/>
-                <img src="/menu/fruit-watermelon.png" class="vegfruit"/>
-                <img src="/menu/veg-carrot.png" class="vegfruit"/>
-
-
-                <img src="/menu/processed-cheese.png" class="processed"/>
-                <img src="/menu/processed-loaf.png" class="processed"/>
-          
-            </div>
         </div>
     </div>
+
+   <!-- menu left page grid-->
+        <div class="page left-page">
+             <div class="grid">
+                    <div 
+                            v-for="(item, index) in menuItems.slice(0, 6)" 
+                            :key="index" 
+                            class="menu-item" 
+                            @click="selectItem(item)">
+                            <img :src="item.image" :alt="item.name" width="128" />
+                           
+                        </div>
+                    </div>
+        </div>
+
+     <!-- menu right page grid-->
+        <div class="page right-page">
+                    <div class="grid">
+                        <div v-for="(item, index) in menuItems.slice(6, 12)" 
+                        :key="index + 6" 
+                        class="menu-item" 
+                        @click="selectItem(item)">
+                        <img :src="item.image" :alt="item.name" width="128" />
+                    
+                        </div>
+                    </div>
+                    </div>
 </template>
 <script>
 export default{
-
-}
+    data(){
+        return{
+            menuItems: [
+                { name: "coffee", image: "/menu/drink-coffee.png" },
+                { name: "milk", image: "/menu/drink-milk.png" },
+                { name: "fillet", image: "/menu/meat-fillet.png" },
+                { name: "fish", image: "/menu/meat-fish.png" },
+                { name: "chicken", image: "/menu/meat-chicken.png" },
+                { name: "grape", image: "/menu/fruit-grape.png" },
+                { name: "pear", image: "/menu/fruit-pear.png" },
+                { name: "watermelon", image: "/menu/fruit-watermelon.png" },
+                { name: "carrot", image: "/menu/veg-carrot.png" },
+                { name: "cheese", image: "/menu/processed-cheese.png" },
+                { name: "loaf", image: "/menu/processed-loaf.png" },
+            ],
+        };
+    },
+    methods: {
+        selectItem(item){
+            console.log(`${item.name} selected`);
+            this. $emit("select", item);
+        }
+    }
+};
 </script>
 
 <style>
 .book-itself,
 .book-index,
-.book-flip {
-position: absolute;
+.book-pagebutton {
+    position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -66,17 +94,82 @@ img {
   height: auto;       /* Maintains aspect ratio */
 }
 
-.book-flip{
+
+.book-pagebutton{
     z-index: 4;
 }
-.book-itself{
-    z-index: 2;
-}
+
+
 .book-index{
     z-index: 1;
 }
 
-.item{
-    z-index: 5;
+.book-itself{
+    z-index: 2;
 }
+
+.page {
+    position: absolute;
+    top: 21%;
+    width: 40%; /* Each page takes half of the book */
+    height: 65%;
+}
+
+/* Left page grid */
+.left-page {
+    left: 8%; /* Expanding from the middle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-page .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 80%; /* 80% of the left page */
+    height: 66%;
+}
+
+/* Right page grid */
+.right-page {
+    right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-page .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 80%;
+    height: 66%;
+}
+
+
+/* Grid items */
+.menu-item {
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(249, 235, 235, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.menu-item:hover {
+  background-color: #d52525;
+}
+
+.menu-item img {
+ width: 35%;
+ height:auto;
+
+}
+
 </style>
