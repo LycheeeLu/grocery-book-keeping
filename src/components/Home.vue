@@ -15,7 +15,10 @@
     <swiper-slide>Bulletin<router-view/></swiper-slide>
   </swiper>
 
+  <div class="cat-menu">
   <CatMenu />
+  </div>
+ 
 
 </template>
 
@@ -52,3 +55,7 @@ export default {
   },
 };
 </script>
+
+<style>
+
+</style>

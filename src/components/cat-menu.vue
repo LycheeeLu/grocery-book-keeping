@@ -1,7 +1,7 @@
 <template>
     <div class="cat-page-overlay" @click="toggleCatMenu">
         <img 
-            src="/cat-icon-tail.gif"
+            src="/cat-icon.jpg"
                 alt ="cat icon"
                 class="cat-icon pixelart"
         />

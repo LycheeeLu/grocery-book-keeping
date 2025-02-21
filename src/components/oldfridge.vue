@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import GroceryMenu from './GroceryMenu.vue';
+import GroceryMenu from './oldgrocerymenu.vue';
 
 
 export default {
@@ -108,3 +108,28 @@ export default {
   margin-left: 20px; /* Adjust as needed for spacing */
 }
 </style>
+
+
+
+
+
+<div class="page-layout">
+
+  <!-- Fridge container -->
+   <div class="fridge-container">
+     <div class="fridge">
+       <Fridge/>
+     </div>
+   </div>
+
+
+
+ 
+  <!-- Menu container -->
+   <div class="book-container">
+     <div class="book">
+       <Book/>
+     </div>
+   </div>
+
+ </div>
