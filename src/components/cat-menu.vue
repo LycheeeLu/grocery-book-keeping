@@ -1,7 +1,7 @@
 <template>
     <div class="cat-page-overlay" @click="toggleCatMenu">
         <img 
-            src="/cat-icon.jpg"
+            src="/cat-icon-tail.gif"
                 alt ="cat icon"
                 class="cat-icon pixelart"
         />
@@ -74,11 +74,16 @@ export default {
 }
 .cat-page-overlay{ 
  position: fixed;
-  bottom: 15px;
+  bottom: 3%;
   left:50%;
   transform: translateX(-50%);
   z-index: 1000;
   cursor: pointer;
+  display: flex;  /* Ensure it wraps the cat icon */
+  align-items: center;
+  justify-content: center;
+  width: 120px; 
+  height: 120px; /* Same as cat icon height */
 }
 .cat-icon{
     width: 120px;

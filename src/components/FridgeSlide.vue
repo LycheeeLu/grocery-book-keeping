@@ -36,15 +36,18 @@ export default {
 <style scoped>
 .page-layout {
   margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+
 }
 .fridge-container {
   position: relative;
   width: 70%;
-  max-width: 700px;
-  height: 700px;
+  max-width: 600px;
+  height: 650px;
   overflow: hidden;
   margin-bottom: 0rem;
 }
@@ -68,10 +71,7 @@ export default {
   height: 100%;
 }
 @media (max-width: 768px) {
-  .kitchen-layout {
-    width: 95%;
-    gap: 0.25rem; /* Even smaller gap on mobile */
-  }
+
 
   .fridge-container {
     width: 85%;
