@@ -74,7 +74,7 @@ export default {
 }
 .cat-page-overlay{ 
  position: fixed;
-  bottom: 3%;
+  bottom: 2%;
   left:50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -82,12 +82,12 @@ export default {
   display: flex;  /* Ensure it wraps the cat icon */
   align-items: center;
   justify-content: center;
-  width: 120px; 
-  height: 120px; /* Same as cat icon height */
+  width: 160px; 
+  height: 160px; /* Same as cat icon height */
 }
 .cat-icon{
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
 
 }
 .menu-options{

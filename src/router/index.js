@@ -1,35 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../components/Home.vue';
+import HomeSlide from '../components/Home.vue';
 import FridgeSlide from '../components/FridgeSlide.vue';
-import KitchenSlide from '../components/KitchenSlide.vue';
-import BulletinSlide from '../components/BulletinSlide.vue';
+import WishlistSlide from '../components/WishlistSlide.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-    children:[
-  
-      {
-        path: '/fridgeslide',
-        name: 'FridgeSlide',
-        component: FridgeSlide,
-      },
-      {
-        path:'/kitchenslide',
-        name: 'KitchenSlide',
-        component: KitchenSlide,
-    
-      },
-      {
-        path:'/bulletinslide',
-        name: 'BulletinSlide',
-        component: BulletinSlide,
-      }
-
-    ]
+    redirect: '/homeslide'
   },
+
+  {
+    path: '/homeslide',
+    name: 'HomeSlide',
+    component: HomeSlide,
+  },
+  {
+    path: '/fridgeslide',
+    name: 'FridgeSlide',
+    component: FridgeSlide,
+  },
+  {
+    path:'/wishlistslide',
+    name: 'WishlistSlide',
+    component: WishlistSlide,
+  }
+
 ];
 
 const router = createRouter({

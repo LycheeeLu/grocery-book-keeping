@@ -97,7 +97,7 @@ export default {
 
   .fridge-container {
     width: 90%;
-    height: 500px;
+    height: 400px;
     margin-bottom: -5rem;
   }
 

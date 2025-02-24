@@ -127,7 +127,7 @@ img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 10px;
+    gap: 8px;
     width: 80%; /* 80% of the left page */
     height: 66%;
 }
@@ -144,7 +144,7 @@ img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 10px;
+    gap: 8px;
     width: 80%;
     height: 66%;
 }
@@ -167,7 +167,7 @@ img {
 }
 
 .menu-item img {
- width: 35%;
+ width: 34%;
  height:auto;
 
 }
